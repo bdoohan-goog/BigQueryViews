@@ -1,9 +1,10 @@
 //Create the view
 //Update the schema with descriptions
 PROJECT_ID="[YOUR_PROJECT_ID]"
+DATASET="[YOUR_DATASET]"
 VIEW_NAME="[YOUR-VIEW-NAME]"
 
-$ bq show --schema --format=prettyjson $PROJECT_ID:$VIEW_NAME > schema.json
+$ bq show --schema --format=prettyjson $PROJECT_ID:$DATASET.$VIEW_NAME > schema.json
 $ cat schema.json
 [
   {
@@ -12,9 +13,9 @@ $ cat schema.json
   }
 ]
 $ vi schema.json
-$ bq update --table $PROJECT_ID:$VIEW_NAME ./schema.json
+$ bq update --table $PROJECT_ID:$DATASET.$VIEW_NAME ./schema.json
 Table successfully updated.
-$ bq show --schema --format=prettyjson $DATASET:$VIEW_NAME
+$ bq show --schema --format=prettyjson $DATASET:$DATASET.$VIEW_NAME
 [
   {
     "description": "my description",
